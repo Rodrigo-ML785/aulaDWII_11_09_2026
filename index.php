@@ -13,6 +13,12 @@
     <!-- Formulário para entrada dos dados -->
     <form method="POST">
 
+        <!-- Campo para informar o nome -->
+        <label>Nome:</label><br />
+        <input type="text" name="nome" required />
+
+        <br><br>
+
         <!-- Campo para informar o e-mail -->
         <label>E-mail:</label><br />
         <input type="email" name="email" required />
@@ -29,11 +35,17 @@
     // Verifica se o formulário foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        // Recebe o e-mail enviado pelo formulário
+        // Recebe nome e e-mail enviados pelo formulário
+        $nome = $_POST['nome'];
         $email = $_POST['email'];
 
-        // Mostra o e-mail informado
-        echo "E-mail recebido: " . $email;
+        // Sanitiza os valores para exibição segura
+        $nomeSeguro = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+        $emailSeguro = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+
+        // Mostra os dados informados
+        echo "Nome recebido: " . $nomeSeguro . "<br>";
+        echo "E-mail recebido: " . $emailSeguro;
     }
 
     ?>
