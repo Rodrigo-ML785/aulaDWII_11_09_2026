@@ -11,7 +11,13 @@
     <h1>Dados do Cliente</h1>
 
     <!-- Formulário para entrada dos dados -->
-    <form method="POST">
+    <form action="index.php" method="POST">
+
+        <!-- Campo para informar o nome -->
+        <label>Nome:</label><br />
+        <input type="text" name="nome" required />
+
+        <br><br>
 
         <!-- Campo para informar o e-mail -->
         <label>E-mail:</label><br />
@@ -29,10 +35,12 @@
     // Verifica se o formulário foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        // Recebe o e-mail enviado pelo formulário
+        // Recebe o nome e o e-mail enviados pelo formulário
+        $nome = $_POST['nome'];
         $email = $_POST['email'];
 
-        // Mostra o e-mail informado
+        // Mostra os dados informados
+        echo "Nome recebido: " . $nome . "<br>";
         echo "E-mail recebido: " . $email;
     }
 
